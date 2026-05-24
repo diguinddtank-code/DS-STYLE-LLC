@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #FDFDFB;
+  --color-brand-card: #FFFFFF;
+  --color-brand-gold: #C5A862;
+  --color-brand-gold-light: #DFCDA4;
+  --color-brand-charcoal: #1A1A18;
+  --color-brand-border: #EAE6DF;
+  --color-brand-muted: #7A7570;
+  --color-brand-white-accent: #F6F5F0;
+
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
+}
+
+@layer utilities {
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom scrollbar matching the luxury clean gold aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FDFDFB;
+}
+::-webkit-scrollbar-thumb {
+  background: #EAE6DF;
+  border-radius: 10px;
+  border: 2px solid #FDFDFB;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C5A862;
+}
+
+/* Button metallic gleam shimmer animation */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 30%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: rotate(30deg);
+  transition: none;
+}
+.btn-shine:hover::after {
+  left: 120%;
+  transition: all 0.9s ease-in-out;
+}
+
+/* Custom horizontal scrolling marquee for infinite reviews */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-container {
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
